@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swarmly - Powered Collectively</title>
+    <title>Swarmly - Unleash Your Collective Potential</title>
     <style>
         * {
             margin: 0;
@@ -18,6 +18,51 @@
             overflow-x: hidden;
         }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a5f 0%, #0c7b93 100%);
             min-height: 100vh;
@@ -26,6 +71,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
         }
 
         .particles {
@@ -62,7 +108,7 @@
             color: white;
             z-index: 10;
             padding: 2rem;
-            max-width: 1200px;
+            max-width: 1000px;
         }
 
         .logo {
@@ -70,7 +116,7 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             letter-spacing: 2px;
-            text-transform: lowercase;
+            text-transform: capitalize;
             animation: fadeInDown 1s ease;
         }
 
@@ -81,6 +127,7 @@
             font-weight: 300;
             letter-spacing: 3px;
             animation: fadeInUp 1s ease 0.3s both;
+            text-transform: uppercase;
         }
 
         .hero-description {
@@ -90,6 +137,26 @@
             line-height: 1.8;
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #ffd700;
+            color: #1e3a5f;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: #ffed4e;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
         }
 
         @keyframes fadeInDown {
@@ -114,29 +181,46 @@
             }
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #ffd700;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
+        /* Trusted By Section */
+        .trusted-by {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+            text-align: center;
+            display: none;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
+        .trusted-by h3 {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .client-logo {
+            height: 60px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        /* Services Section */
         .services {
             padding: 6rem 2rem;
             background: white;
@@ -150,75 +234,142 @@
         .section-title {
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 1rem;
-            color: #1e3a5f;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #666;
             margin-bottom: 4rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            color: #1e3a5f;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2.5rem;
         }
 
         .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #ffd700;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .service-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             display: block;
         }
 
         .service-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
             color: #1e3a5f;
             font-weight: 600;
         }
 
         .service-description {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 6rem 2rem;
+        }
+
+        .how-it-works-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 2.5rem;
+            width: 50px;
+            height: 50px;
+            background: #ffd700;
+            color: #1e3a5f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .step-title {
+            font-size: 1.6rem;
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step-description {
             color: #555;
             line-height: 1.7;
         }
 
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+
+        .testimonial-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Philosophy Section */
         .philosophy {
             background: linear-gradient(135deg, #2c3e50 0%, #1e3a5f 100%);
             padding: 6rem 2rem;
@@ -243,103 +394,180 @@
             margin-bottom: 2rem;
         }
 
-        .cta {
-            background: #ffd700;
-            padding: 4rem 2rem;
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0c7b93 100%);
+            padding: 6rem 2rem;
             text-align: center;
+            color: white;
         }
 
-        .cta-title {
+        .final-cta h2 {
             font-size: 2.5rem;
-            color: #1e3a5f;
             margin-bottom: 1.5rem;
         }
 
-        .cta-text {
+        .final-cta p {
             font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
         }
 
-        .cta-button {
+        .cta-button-secondary {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background: #1e3a5f;
-            color: white;
+            background: white;
+            color: #1e3a5f;
             text-decoration: none;
             font-size: 1.1rem;
             border-radius: 50px;
             transition: all 0.3s ease;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            background: #0c7b93;
+        .cta-button-secondary:hover {
+            background: #ffd700;
             transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
         }
 
+        /* Footer */
         footer {
             background: #2c3e50;
             color: white;
-            text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem 2rem;
         }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
+            .nav-links {
+                display: none;
             }
-            
-            .tagline {
+
+            .hero-headline {
+                font-size: 2.2rem;
+            }
+
+            .hero-subheadline {
                 font-size: 1.1rem;
             }
-            
-            .hero-description {
-                font-size: 1rem;
-            }
-            
-            .section-title, .philosophy-title, .cta-title {
+
+            .section-title {
                 font-size: 2rem;
             }
-            
-            .services-grid {
+
+            .services-grid,
+            .steps-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .client-logos {
+                gap: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">swarmly</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="particles" id="particles"></div>
         <div class="hero-content">
-            <h1 class="logo">Swarmly</h1>
-            <p class="tagline">POWERED COLLECTIVELY</p>
+            <h1 class="logo">swarmly</h1>
+            <p class="tagline">Powered Collectively</p>
             <p class="hero-description">
                 Where collective intelligence meets purposeful action. We don't dictate solutions—we unlock the emergent wisdom already within your organisation, transforming individual expertise into coordinated brilliance.
             </p>
-        </div>
-        <div class="scroll-indicator" onclick="document.querySelector('.services').scrollIntoView({behavior: 'smooth'})">
-            ↓
+            <a href="https://calendar.app.google/MTgVrC9PVB2uktbK6" class="cta-button" target="_blank" rel="noopener noreferrer">Book a Discovery Call</a>
         </div>
     </section>
 
-    <section class="services">
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+        <div class="philosophy-content">
+            <h2 class="philosophy-title">The Power of Emergence</h2>
+            <p class="philosophy-text">
+                Like a murmuration of starlings creating breathtaking patterns without a conductor, or ants building complex colonies through simple local interactions, your organisation holds untapped collective intelligence.
+            </p>
+            <p class="philosophy-text">
+                Swarmly doesn't impose external solutions. We facilitate the conditions for your team's own wisdom to surface, align, and coordinate—creating results far greater than any individual could achieve alone.
+            </p>
+            <p class="philosophy-text">
+                The answers are already within your organisation. We help you discover them.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="services-container">
             <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">
-                Facilitating emergence through proven methodologies that honor your organization's unique intelligence
-            </p>
             <div class="services-grid">
                 <div class="service-card">
                     <span class="service-icon">🤝</span>
                     <h3 class="service-title">Team Development</h3>
                     <p class="service-description">
-                        Build cohesive teams that naturally coordinate and amplify each other's strengths. We create environments where collaborative intelligence emerges organically, transforming groups into high-performing collectives.
+                        Build cohesive, high-performing teams that naturally coordinate and amplify each other's strengths through facilitated collaboration.
                     </p>
                 </div>
 
@@ -347,61 +575,173 @@
                     <span class="service-icon">⚡</span>
                     <h3 class="service-title">Practice-Based Training</h3>
                     <p class="service-description">
-                        Learning that sticks through doing. Our immersive training programs embed new capabilities through real-world application, ensuring your team doesn't just understand—they embody new ways of working together.
+                        Immersive learning that embeds new capabilities through real-world application, ensuring lasting behavioural change.
                     </p>
                 </div>
 
                 <div class="service-card">
                     <span class="service-icon">🔄</span>
-                    <h3 class="service-title">Process Autonomy</h3>
+                    <h3 class="service-title">Operational Improvement</h3>
                     <p class="service-description">
-                        Liberate your organization's natural intelligence by designing systems that enable self-organization. We help you build frameworks that empower teams to adapt, innovate, and coordinate without constant top-down direction.
+                        Design systems that enable self-organisation and empower teams to adapt, innovate, and coordinate effectively.
                     </p>
                 </div>
 
                 <div class="service-card">
                     <span class="service-icon">🎯</span>
-                    <h3 class="service-title">Strategic Planning & Leadership Coaching</h3>
+                    <h3 class="service-title">Product Strategy</h3>
                     <p class="service-description">
-                        Develop leaders who facilitate rather than command, and strategies that emerge from collective insight. We partner with you to discover pathways forward that your organization itself reveals.
+                        Develop clear, actionable product strategies that emerge from collective insight and create genuine market alignment.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🌟</span>
+                    <h3 class="service-title">Leadership Coaching</h3>
+                    <p class="service-description">
+                        Cultivate leaders who facilitate rather than command, unlocking their ability to harness collective intelligence.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">💡</span>
+                    <h3 class="service-title">Visioning Workshops</h3>
+                    <p class="service-description">
+                        Guided, high-impact sessions designed to rapidly align diverse stakeholders, synthesise collective ideas, and forge a unified strategic vision or solution using structured facilitation techniques.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="philosophy">
-        <div class="philosophy-content">
-            <h2 class="philosophy-title">The Power of Emergence</h2>
-            <p class="philosophy-text">
-                Like a murmuration of starlings creating breathtaking patterns without a conductor, or ants building complex colonies through simple local interactions, your organization holds untapped collective intelligence.
-            </p>
-            <p class="philosophy-text">
-                Swarmly doesn't impose external solutions. We facilitate the conditions for your team's own wisdom to surface, align, and coordinate—creating results far greater than any individual could achieve alone.
-            </p>
-            <p class="philosophy-text">
-                The answers are already within your organization. We help you discover them.
-            </p>
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Discover</h3>
+                    <p class="step-description">
+                        We dive deep to understand your unique challenges, goals, and organisational context. Through careful listening and analysis, we identify where collective intelligence can make the greatest impact.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Navigate</h3>
+                    <p class="step-description">
+                        We help you develop a deeper understanding of your space and how to navigate through uncertainty and challenges. By mapping the terrain together, you gain clarity on the path forward.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Align</h3>
+                    <p class="step-description">
+                        We facilitate sessions to harness your team's collective intelligence and build a clear path forward. By bringing diverse perspectives together, we create alignment and shared ownership.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Activate</h3>
+                    <p class="step-description">
+                        We equip you with the tools and frameworks to turn strategy into sustained action and measurable results. Your team leaves with the capability to continue growing independently.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="cta">
-        <h2 class="cta-title">Ready to Unlock Your Collective Intelligence?</h2>
-        <p class="cta-text">
-            Let's explore how emergent collaboration can transform your organization. The swarm is smarter than any single member—let's help yours take flight.
-        </p>
-        <a href="mailto:jeremie@swarmly.com.au" class="cta-button">Get in Touch</a>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-quote">
+                        "Swarmly helped us cut our strategic planning cycle from 6 months to 6 weeks, and for the first time, everyone actually understood and believed in the plan."
+                    </p>
+                    <p class="testimonial-author">Sarah Chen</p>
+                    <p class="testimonial-role">CEO, TechForward</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-quote">
+                        "The team development work didn't just improve our collaboration—it fundamentally changed how we approach problems. We're 40% more efficient in our project delivery."
+                    </p>
+                    <p class="testimonial-author">Michael Roberts</p>
+                    <p class="testimonial-role">Operations Director, BuildCo</p>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-quote">
+                        "Finally, training that actually sticks. Six months later, our team is still using the frameworks and the results speak for themselves."
+                    </p>
+                    <p class="testimonial-author">Priya Sharma</p>
+                    <p class="testimonial-role">Learning & Development Manager, HealthPlus</p>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="contact">
+        <h2>Ready to Build a More Effective Organisation?</h2>
+        <p>Let's explore how collective intelligence can transform your team. Book a discovery call today.</p>
+        <a href="mailto:jeremie@swarmly.com.au" class="cta-button-secondary">Let's Talk</a>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>Swarmly is a Business of Swarm Impact (ABN 46 139 600 411)</p>
-        <p style="margin-top: 0.5rem; opacity: 0.8;">&copy; 2025 Swarmly. Powered Collectively.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Swarmly</h4>
+                <p style="opacity: 0.8; line-height: 1.8;">
+                    Facilitating transformative growth through collective intelligence.
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Team Development</a></li>
+                    <li><a href="#services">Practice-Based Training</a></li>
+                    <li><a href="#services">Operational Improvement</a></li>
+                    <li><a href="#services">Product Strategy</a></li>
+                    <li><a href="#services">Leadership Coaching</a></li>
+                    <li><a href="#services">Visioning Workshops</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Get in Touch</h4>
+                <ul>
+                    <li><a href="mailto:jeremie@swarmly.com.au">jeremie@swarmly.com.au</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>Swarmly is a Business of Swarm Impact (ABN 46 139 600 411)</p>
+            <p style="margin-top: 0.5rem;">&copy; 2025 Swarmly. Powered Collectively.</p>
+        </div>
     </footer>
 
     <script>
         // Generate swarm particles
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
+        const particleCount = 40;
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -436,10 +776,10 @@
             });
         });
 
-        // Add intersection observer for scroll animations
+        // Intersection observer for scroll animations
         const observerOptions = {
             threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -451,11 +791,11 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card').forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(card);
+        document.querySelectorAll('.service-card, .step, .testimonial').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(el);
         });
     </script>
 </body>
